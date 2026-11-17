@@ -87,3 +87,7 @@ src/
 ## Notes
 
 Public Binance endpoints are rate limited and can be geo-blocked in some regions. Ticker falls back across four hosts and reconnects the socket automatically, but quotes can still lag the exchange book. Everything here is informational — not financial advice.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
