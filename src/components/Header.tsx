@@ -80,6 +80,8 @@ export default function Header() {
 
           <div className="ml-auto flex items-center gap-1.5 sm:gap-3">
             <span
+              role="status"
+              aria-live="polite"
               className="hidden items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-faint lg:flex"
               title={live ? 'Streaming Binance spot data' : 'Reconnecting to the feed'}
             >
