@@ -37,6 +37,16 @@ Most market dashboards are heavy, gated or full of fake rows. Ticker is the oppo
 | `/watchlist` | Saved pairs with combined volume and best/weakest |
 | `/about` | How the feed works and what the limits are |
 
+## A look inside
+
+<div align="center">
+
+<img src="docs/coin.png" alt="Coin desk — candles, 24h statistics and order book depth" width="100%" />
+
+<img src="docs/heatmap.png" alt="Heatmap — every pair sized by volume and tinted by its move" width="100%" />
+
+</div>
+
 ## Stack
 
 | Layer | Choice |
