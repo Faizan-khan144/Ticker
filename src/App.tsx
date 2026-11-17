@@ -35,8 +35,11 @@ export default function App() {
     <div className="grain relative flex min-h-screen flex-col">
       <div className="scroll-progress" aria-hidden="true" />
       <ScrollToTop />
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Header />
-      <main key={location.pathname} className="page-enter relative z-10 flex-1">
+      <main id="main" tabIndex={-1} key={location.pathname} className="page-enter relative z-10 flex-1 outline-none">
         <Suspense
           fallback={
             <div className="wrap py-20">
