@@ -1,32 +1,31 @@
-# React + TypeScript + Vite
+# Ticker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A realtime crypto desk for the spot market. Live prices from Binance's public API, candles, cumulative depth, a volume-weighted heatmap and a local watchlist — no account, no keys.
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+```bash
+npm run build
+npx oxlint src
+```
+
+## What's inside
+
+- **Markets** — 48 USDT pairs streaming over one multiplexed WebSocket, batched into the UI every 700ms.
+- **Coin desk** — `/coin/:symbol` with 1m–1w candles, volume, 24h stats, order book depth and related majors.
+- **Heatmap** — every pair sized by 24h dollar volume and tinted by its move.
+- **Watchlist** — stars persisted in `localStorage`, with combined volume and top/weakest movers.
+- **Command palette** — `⌘K` or `/` to jump to a pair or page.
+
+## Stack
+
+React 19, Vite, TypeScript, Tailwind CSS 4, Zustand, react-router, lucide-react. Charts are hand-rolled SVG/CSS.
+
+## Data
+
+Public Binance spot endpoints only (`api.binance.com` with fallbacks) plus `wss://stream.binance.com` for live tickers. Public endpoints can be rate limited or geo-blocked; the UI falls back across hosts and reconnects automatically. Numbers are informational only, not financial advice.
