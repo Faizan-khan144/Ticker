@@ -1,14 +1,15 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import About from './pages/About'
-import Coin from './pages/Coin'
-import Heatmap from './pages/Heatmap'
-import Markets from './pages/Markets'
-import NotFound from './pages/NotFound'
-import Watchlist from './pages/Watchlist'
 import { useMarket } from './store/market'
+
+const Markets = lazy(() => import('./pages/Markets'))
+const Coin = lazy(() => import('./pages/Coin'))
+const Heatmap = lazy(() => import('./pages/Heatmap'))
+const Watchlist = lazy(() => import('./pages/Watchlist'))
+const About = lazy(() => import('./pages/About'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -36,14 +37,24 @@ export default function App() {
       <ScrollToTop />
       <Header />
       <main key={location.pathname} className="page-enter relative z-10 flex-1">
-        <Routes>
-          <Route path="/" element={<Markets />} />
-          <Route path="/coin/:symbol" element={<Coin />} />
-          <Route path="/heatmap" element={<Heatmap />} />
-          <Route path="/watchlist" element={<Watchlist />} />
-          <Route path="/about" element={<About />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense
+          fallback={
+            <div className="wrap py-20">
+              <div className="skeleton h-3 w-24" />
+              <div className="skeleton mt-4 h-10 w-72 max-w-full" />
+              <div className="skeleton mt-8 h-72 w-full" />
+            </div>
+          }
+        >
+          <Routes>
+            <Route path="/" element={<Markets />} />
+            <Route path="/coin/:symbol" element={<Coin />} />
+            <Route path="/heatmap" element={<Heatmap />} />
+            <Route path="/watchlist" element={<Watchlist />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>
