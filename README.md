@@ -13,6 +13,10 @@ Live Binance prices, candles, order book depth, a volume-weighted heatmap and a 
 [![Zustand](https://img.shields.io/badge/Zustand-5-0a0a0a?style=flat-square)](https://zustand.docs.pmnd.rs)
 [![Binance](https://img.shields.io/badge/Data-Binance%20Spot-e11d2e?style=flat-square)](https://binance-docs.github.io/apidocs/spot/en/)
 
+![Pull Shark](https://img.shields.io/badge/GitHub-Pull%20Shark-c9a227?style=flat-square&logo=github&logoColor=white)
+![YOLO](https://img.shields.io/badge/GitHub-YOLO-c9a227?style=flat-square&logo=github&logoColor=white)
+![Quickdraw](https://img.shields.io/badge/GitHub-Quickdraw-c9a227?style=flat-square&logo=github&logoColor=white)
+
 <img src="docs/preview.png" alt="Ticker home — live markets, hero dashboard and volume bars" width="100%" />
 
 </div>
