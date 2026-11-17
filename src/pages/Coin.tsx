@@ -275,8 +275,14 @@ export default function Coin() {
             </div>
 
             <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line/60">
-              {(stats.length ? stats : Array.from({ length: 6 }, () => ({ label: '—', value: '—' }))).map((stat) => (
-                <div key={stat.label} className="bg-panel px-3 py-2.5">
+              {(stats.length
+                ? stats
+                : ['24h high', '24h low', '24h open', '24h volume', 'Quote volume', 'Trades'].map((label) => ({
+                    label,
+                    value: '—',
+                  }))
+              ).map((stat, index) => (
+                <div key={`${stat.label}-${index}`} className="bg-panel px-3 py-2.5">
                   <div className="font-mono text-[9px] uppercase tracking-[0.1em] text-faint">{stat.label}</div>
                   <div className="mt-0.5 truncate font-mono text-[11.5px] text-ink">{stat.value}</div>
                 </div>
